@@ -1,0 +1,10 @@
+*.o
+safe-lite/safe-lite
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.orig
+*.bak
