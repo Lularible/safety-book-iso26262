@@ -2,6 +2,12 @@
 
 以免疫系统为叙事线索的功能安全技术书。兼顾ISO 26262标准分析、源码拆解与动手实现。
 
+<p align="center">
+  <a href="README.md"><img src="assets/lang-zh-active.svg" alt="中文" height="30"></a>&nbsp;&nbsp;&nbsp;<a href="en/README.md"><img src="assets/lang-en.svg" alt="English" height="30"></a>
+</p>
+
+> 🌐 English version: [safety-book (EN)](en/README.md). English chapters live in [`en/chapters/`](en/chapters/).
+
 ## 在线阅读
 
 [📖 在线浏览本书](https://web-l.github.io/lularible-books/safety-book-iso26262/index.html)
