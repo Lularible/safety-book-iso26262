@@ -1,8 +1,10 @@
 #include "safe_queue.h"
 
 /* ─── safe_queue_metadata_crc ─────────────────────────────────────────────
- * Computes CRC8 over the queue metadata fields (head, tail, count).
- * This is used to detect silent corruption of the control structure.
+ * Computes CRC8 over the queue metadata fields (head, tail, count), packed
+ * as 12 little-endian bytes.  This is an on-demand diagnostic helper: the
+ * queue struct stores no metadata checksum, nothing calls this function
+ * today, and there is no stored reference value to compare against.
  * ───────────────────────────────────────────────────────────────────────── */
 uint8_t safe_queue_metadata_crc(const safe_queue_t *q)
 {
@@ -162,8 +164,12 @@ uint32_t safe_queue_count(const safe_queue_t *q)
 }
 
 /* ─── safe_queue_validate ─────────────────────────────────────────────────
- * Runs a full integrity check: validates metadata CRC and all occupied
- * entries.  Returns SAFE_OK only if everything is intact.
+ * Walks the occupied slots from head to tail and checks each entry's magic
+ * number plus its payload CRC.  Returns SAFE_OK only if every occupied entry
+ * is intact, SAFE_MAGIC_ERROR on the first bad magic, SAFE_CRC_MISMATCH on
+ * the first bad CRC.  This function does NOT check queue metadata (head,
+ * tail, count) itself; safe_queue_metadata_crc() is a separate on-demand
+ * diagnostic helper with no stored reference to compare against.
  * PRODUCTION: A periodic validation task runs this check in the background,
  * logging any corruption to NVRAM before triggering a recovery action.
  * ───────────────────────────────────────────────────────────────────────── */

@@ -8,7 +8,8 @@
  * Each protected message carries a 2-byte header followed by payload.
  *
  * Header layout (big-endian on the wire):
- *   Byte 0: CRC8 over DataID || Counter upper nibble?  No — over ALL fields.
+ *   Byte 0: CRC8, computed over [DataID(1B) | Counter(1B) | payload(N B)].
+ *           The CRC byte itself is NOT covered by the CRC computation.
  *   Byte 1: [Counter(4 bits) | DataID(4 bits)], MSB first within byte.
  *
  * Wire format:

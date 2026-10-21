@@ -33,8 +33,11 @@ safe_status_t safe_wdg_init(safe_wdg_t *wdg, safe_wdg_timeout_cb_t cb)
  * tolerance_ms — extra grace period added to deadline
  * max_misses   — consecutive misses allowed before declaring timeout
  *
- * Example: deadline=100ms, tolerance=20ms, max_misses=3
- *   → timeout fires after 3×(100+20)=360ms of silence from that slot.
+ * Example: deadline=100ms, tolerance=20ms, max_misses=3, 20ms service cycle.
+ *   Real timing: the slot must first go silent for deadline+tolerance (120ms)
+ *   before the miss counter starts advancing; after that, each service call
+ *   that still sees elapsed > threshold advances miss_count by one, so with a
+ *   20ms cycle the timeout fires at roughly 180ms of continuous silence.
  * ───────────────────────────────────────────────────────────────────────── */
 safe_status_t safe_wdg_register_slot(safe_wdg_t *wdg, int id,
                                      const char *name,
@@ -57,8 +60,9 @@ safe_status_t safe_wdg_register_slot(safe_wdg_t *wdg, int id,
 }
 
 /* ─── safe_wdg_start ──────────────────────────────────────────────────────
- * Arm the periodic timer.  interval_ms is the service polling period.
- * A short interval (10-50ms) gives responsive detection.
+ * Arm the periodic timer.  The service polling period is hard-coded to 20ms
+ * inside this function; a shorter period would give more responsive detection
+ * at the cost of CPU, a longer period would delay detection.
  * ───────────────────────────────────────────────────────────────────────── */
 safe_status_t safe_wdg_start(safe_wdg_t *wdg)
 {

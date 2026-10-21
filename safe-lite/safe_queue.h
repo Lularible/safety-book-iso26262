@@ -5,7 +5,9 @@
 
 /* ─── Safe queue entry ────────────────────────────────────────────────────
  * Each entry is integrity-protected: magic number + length + payload CRC.
- * The queue itself carries a metadata CRC over (head, tail, count).
+ * The queue struct itself does NOT store a metadata checksum; a helper
+ * (safe_queue_metadata_crc) can compute one over (head, tail, count) on
+ * demand for diagnostic snapshots, but nothing compares against it.
  *
  * PRODUCTION: In real ECU firmware, queue entries reside in non-cacheable
  * shared memory (e.g., between Cortex-R5 and Cortex-A53 via RPMsg).  The
