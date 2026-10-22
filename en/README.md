@@ -16,11 +16,11 @@ A technical book on functional safety narrated through the metaphor of the immun
 
 The book has 44 sections in five parts:
 
-- **Part 1 (6 sections): The conceptual foundation.** Starts from the immune-system metaphor, passes through Gödel's incompleteness theorems, the Therac-25 disaster, and the halting problem, then uses alpha particles and a thought experiment to put you in a safety engineer's shoes.
-- **Part 2 (18 sections): ISO 26262 in depth.** HARA, ASIL determination, SPFM/LFM/PMHF, FMEDA, FFI, MISRA C, MC/DC, ASIL decomposition, FTA/DFA, and the full argument chain that ends in a safety case.
-- **Part 3 (8 sections): Safety mechanisms, one by one.** Watchdog triple supervision, lockstep cores, ECC memory protection, MPU/SMU, E2E protection, CRC, program-flow monitoring, and safe states with degradation.
-- **Part 4 (6 sections): Reading the production source.** Walks through Arctic Core's open-source implementation to see how WdgM, the E2E library, the CRC engine, and RamTst land in industrial-grade code (roughly 6,500 lines of C).
-- **Part 5 (6 sections): Building safe-lite.** Implements a multi-slot watchdog, E2E protection, a ring queue with CRC integrity, and a fault-injection framework from scratch, then wires them into one complete safety-loop verification (roughly 1,173 lines of C).
+- **Part 1 (6 sections): A 1.5-Billion-Year Survival Lesson.** Starts from the immune-system metaphor, passes through Gödel's incompleteness theorems, the Therac-25 disaster, and the halting problem, then uses alpha particles and a thought experiment to put you in a safety engineer's shoes.
+- **Part 2 (18 sections): The Weights and Measures of Risk.** HARA, ASIL determination, SPFM/LFM/PMHF, FMEDA, FFI, MISRA C, MC/DC, ASIL decomposition, FTA/DFA, and the full argument chain that ends in a safety case.
+- **Part 3 (8 sections): Hunting Faults: Eight Gates.** Watchdog triple supervision, lockstep cores, ECC memory protection, MPU/SMU, E2E protection, CRC, program-flow monitoring, and safe states with degradation.
+- **Part 4 (6 sections): Production Implementation Under the Microscope.** Walks through Arctic Core's open-source implementation to see how WdgM, the E2E library, the CRC engine, and RamTst land in industrial-grade code (roughly 6,500 lines of C).
+- **Part 5 (6 sections): Building an Immune System from Scratch.** Implements a multi-slot watchdog, E2E protection, a ring queue with CRC integrity, and a fault-injection framework from scratch, then wires them into one complete safety-loop verification (roughly 1,173 lines of C).
 
 No prior knowledge of ISO 26262 is required. If you write embedded C for a living, you already have enough background.
 
