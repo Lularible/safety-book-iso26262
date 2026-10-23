@@ -12,7 +12,6 @@
 
 [📖 在线浏览本书](https://web-l.github.io/lularible-books/safety-book-iso26262/index.html)
 
-
 ## 这本书讲了什么
 
 全书 44 节，分五章：
@@ -23,9 +22,30 @@
 - **第四章（6 节）**：显微镜下的量产实现 — 走进 Arctic Core 的开源实现，看 WdgM、E2E 库、CRC 引擎、RamTst 在工业级代码中如何落地（~6,500 行 C）
 - **第五章（6 节）**：从零造一个免疫系统 — 从零实现多槽位看门狗、E2E 保护、带 CRC 完整性的环形队列、故障注入框架，最后串联为一次完整的安全回路验证（~1,173 行 C）
 
-## 适合谁读
+不需要 ISO 26262 的预备知识。如果你平时写嵌入式 C，就已经具备足够的背景。
 
-汽车嵌入式软件工程师、功能安全工程师、系统架构师，以及所有想知道 ISO 26262 不只是"要求什么"、更是"为什么这样要求"和"在 C 代码里怎么实现"的人。
+## 快速开始
+
+在线阅读：按 1.1 到 5.6 的顺序浏览 `chapters/` 下的 Markdown 文件。
+
+推荐：VS Code + Markdown Preview Enhanced 扩展，或 Typora / Obsidian。
+
+构建并运行教学代码：
+
+```bash
+git clone https://github.com/Lularible/safety-book-iso26262.git
+cd safety-book-iso26262
+make -C safe-lite
+./safe-lite/safe-lite
+```
+
+第四部分的源码走读使用开源项目 [openAUTOSAR classic-platform](https://github.com/openAUTOSAR/classic-platform)。本书不内置该仓库。如果你想逐行对照源码，请单独 clone 到 `classic-platform/`：
+
+```bash
+git clone https://github.com/openAUTOSAR/classic-platform.git classic-platform
+```
+
+safe-lite 源码位于本仓库的 `safe-lite/` 目录。
 
 ## 许可证
 

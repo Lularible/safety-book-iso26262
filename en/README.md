@@ -39,7 +39,13 @@ make -C safe-lite
 ./safe-lite/safe-lite
 ```
 
-The source code used for the Part 4 walkthroughs is under `classic-platform/`.
+The Part 4 walkthroughs use the open-source [openAUTOSAR classic-platform](https://github.com/openAUTOSAR/classic-platform) project. It is not vendored in this repository. Clone it separately as `classic-platform/` if you want to follow the source line by line:
+
+```bash
+git clone https://github.com/openAUTOSAR/classic-platform.git classic-platform
+```
+
+The safe-lite source code is part of this repository under `safe-lite/`.
 
 ## License
 

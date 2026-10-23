@@ -8,3 +8,7 @@ safe-lite/safe-lite
 .idea/
 *.orig
 *.bak
+
+# Local-only / third-party checkouts
+classic-platform/
+en/GLOSSARY.md
